@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MHWWS YT - الصفحة الشخصية المتطورة</title>
+    <style>
+        /* --- إعدادات أساسية --- */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden; /* لمنع شريط التمرير بسبب الخلفية المتحركة */
+            background-color: #0d001a; /* أسود مائل للنهدي الغامق جداً */
+            font-family: 'Poppins', sans-serif; /* خط عصري */
+            color: #f0e0ff; /* نص نهدي فاتح جداً */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* --- خلفية خطوط الهكر (Matrix Effect) --- */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* لجعلها خلف المحتوى */
+        }
+
+        /* --- الحاوية الرئيسية للمحتوى --- */
+        .container {
+            background: rgba(25, 0, 45, 0.9); /* خلفية نهدي داكنة شبه شفافة */
+            padding: 50px;
+            border-radius: 30px;
+            border: 3px solid #b300ff; /* إطار نهدي فاقع */
+            box-shadow: 0 0 40px rgba(179, 0, 255, 0.7); /* توهج نهدي قوي */
+            text-align: center;
+            backdrop-filter: blur(15px); /* تأثير ضبابي أعمق */
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s ease; /* تأثير حركة عند التحويم */
+        }
+
+        .container:hover {
+            transform: scale(1.02); /* تكبير طفيف عند التحويم */
+        }
+
+        /* --- الشعار (Logo) --- */
+        .logo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%; /* لجعل الصورة دائرية */
+            border: 4px solid #e0b0ff; /* إطار نهدي فاتح فاقع */
+            box-shadow: 0 0 25px rgba(224, 176, 255, 0.8);
+            margin-bottom: 25px;
+            object-fit: cover; /* لضمان عدم تشوه الصورة */
+        }
+
+        /* --- الاسم الشعار --- */
+        .name {
+            font-size: 3em;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 0 0 15px #e0b0ff, 0 0 30px #b300ff; /* تأثير توهج للنص */
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .title {
+            font-size: 1.3em;
+            color: #d8bfd8; /* نهدي رصاصي */
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        /* --- حاوية الروابط الاجتماعية --- */
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* المسافة بين الأزرار */
+        }
+
+        /* --- تصميم الأزرار --- */
+        .social-btn {
+            display: block;
+            padding: 20px;
+            text-decoration: none;
+            color: #fff;
+            background: linear-gradient(45deg, rgba(179, 0, 255, 0.4), rgba(128, 0, 128, 0.6)); /* تدرج لوني نهدي */
+            border: 2px solid #b300ff;
+            border-radius: 15px;
+            font-size: 1.4em;
+            font-weight: bold;
+            transition: all 0.4s ease; /* تأثير ناعم عند التحويم */
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* تأثير عند تمرير الماوس فوق الزر */
+        .social-btn:hover {
+            background: linear-gradient(45deg, #b300ff, #800080); /* يصبح التدرج لوني نهدي بالكامل */
+            box-shadow: 0 0 30px rgba(179, 0, 255, 0.9);
+            transform: translateY(-5px); /* يرتفع قليلاً */
+        }
+
+        /* إضافة لمسة "هكر" بسيطة للأزرار (خط مضيء يمر) */
+        .social-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(to bottom right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%);
+            transform: rotate(45deg);
+            transition: all 0.6s;
+            opacity: 0;
+        }
+
+        .social-btn:hover::after {
+            opacity: 1;
+            left: 100%;
+            top: 100%;
+        }
+
+    </style>
+</head>
+<body>
+
+    <canvas id="bg-canvas"></canvas>
+
+    <div class="container">
+        <img src="logo.png" alt="MHWWS YT Logo" class="logo" onerror="this.src='https://via.placeholder.com/150/b300ff/FFFFFF?text=MHWWS'">
+        
+        <div class="name">MHWWS YT</div>
+        <div class="title">مرحباً بك في عالمي الرقمي المتطور</div>
+
+        <div class="social-links">
+            <a href="رابط_حساب_الانستغرام_هنا" target="_blank" class="social-btn">إنستغرام</a>
+            <a href="رابط_قناة_اليوتيوب_هنا" target="_blank" class="social-btn">يوتيوب</a>
+            <a href="رابط_قناة_التيليجرام_هنا" target="_blank" class="social-btn">تيليجرام</a>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // الأحرف المستخدمة في التأثير (يمكنك تغييرها)
+        const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
+        const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const nums = '0123456789';
+        const alphabet = katakana + latin + nums;
+
+        const fontSize = 18; // خط أكبر قليلاً
+        const columns = canvas.width / fontSize;
+
+        const rainDrops = [];
+
+        for (let x = 0; x < columns; x++) {
+            rainDrops[x] = 1;
+        }
+
+        const draw = () => {
+            // خلفية سوداء شبه شفافة لخلق تأثير الذيل
+            ctx.fillStyle = 'rgba(13, 0, 26, 0.08)'; // شفافية أقل لتأثير ذيل أطول
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // لون الخطوط (نهدي فاقع)
+            ctx.fillStyle = '#e0b0ff'; 
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < rainDrops.length; i++) {
+                const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+                ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+
+                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.98) { // سرعة تساقط أبطأ قليلاً
+                    rainDrops[i] = 0;
+                }
+                rainDrops[i]++;
+            }
+        };
+
+        // تحديث الحجم عند تغيير حجم النافذة
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        setInterval(draw, 40); // سرعة تحديث أبطأ لتأثير أكثر سلاسة
+    </script>
+</body>
+</html>
